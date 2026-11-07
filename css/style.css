@@ -1,0 +1,243 @@
+/* 
+ * NSL S2 - Nawab Super League Season 2
+ * Visual Identity: "Championship Velocity" (Apex Obsidian, Cyber Emerald & Solar Flame)
+ */
+
+:root {
+  --bg-main: #060A12;
+  --bg-surface: #0E1728;
+  --bg-surface-elevated: #152238;
+  --bg-surface-card: rgba(14, 23, 40, 0.85);
+
+  --accent-emerald: #00F5A0;
+  --accent-emerald-dark: #059669;
+  --accent-emerald-glow: rgba(0, 245, 160, 0.25);
+
+  --accent-gold: #FFB800;
+  --accent-gold-dark: #D97706;
+  --accent-gold-glow: rgba(255, 184, 0, 0.25);
+
+  --accent-crimson: #FF2A6D;
+  --accent-crimson-glow: rgba(255, 42, 109, 0.3);
+
+  --accent-cyan: #00D8F6;
+  --accent-purple: #9D4EDD;
+
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+  
+  --border-subtle: rgba(255, 255, 255, 0.07);
+  --border-card: rgba(148, 163, 184, 0.12);
+  --border-highlight: rgba(0, 245, 160, 0.4);
+
+  --font-display: 'Teko', sans-serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: var(--bg-main);
+  background-image: 
+    radial-gradient(circle at 15% 10%, rgba(0, 245, 160, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 85% 80%, rgba(255, 184, 0, 0.04) 0%, transparent 45%),
+    linear-gradient(180deg, rgba(6, 10, 18, 0.95) 0%, #060A12 100%);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-surface-elevated);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-emerald-dark);
+}
+
+/* Typography Helpers */
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.glow-emerald {
+  text-shadow: 0 0 16px var(--accent-emerald-glow);
+}
+.glow-gold {
+  text-shadow: 0 0 16px var(--accent-gold-glow);
+}
+.glow-crimson {
+  text-shadow: 0 0 16px var(--accent-crimson-glow);
+}
+
+/* Cards & Containers */
+.glass-panel {
+  background: var(--bg-surface-card);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border-card);
+  border-radius: 18px;
+}
+
+.glass-panel-elevated {
+  background: linear-gradient(145deg, rgba(21, 34, 56, 0.9), rgba(14, 23, 40, 0.95));
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
+}
+
+/* 3D Interactive Coin Toss */
+.coin-perspective {
+  perspective: 1200px;
+}
+
+.coin-3d {
+  width: 130px;
+  height: 130px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 3.5s cubic-bezier(0.12, 0.95, 0.25, 1.15);
+  cursor: pointer;
+}
+
+.coin-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  box-shadow: 
+    0 0 0 4px #D97706,
+    0 0 25px rgba(255, 184, 0, 0.4),
+    inset 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+.coin-front {
+  background: radial-gradient(circle at 35% 35%, #FDE68A 0%, #F59E0B 50%, #92400E 100%);
+  color: #78350F;
+  transform: rotateY(0deg);
+}
+
+.coin-back {
+  background: radial-gradient(circle at 35% 35%, #93C5FD 0%, #3B82F6 50%, #1E3A8A 100%);
+  color: #172554;
+  transform: rotateY(180deg);
+}
+
+/* Scorer Big Touch Buttons */
+.scorer-btn {
+  touch-action: manipulation;
+  transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1);
+  active: scale(0.94);
+  user-select: none;
+}
+.scorer-btn:active {
+  transform: scale(0.94);
+  filter: brightness(1.2);
+}
+
+/* Ball Pills in Timeline */
+.ball-pill {
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 800;
+  font-family: var(--font-display);
+  letter-spacing: 0.02em;
+  shrink-0: 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+}
+
+.ball-dot {
+  background: #1E293B;
+  color: #94A3B8;
+  border: 1px solid #334155;
+}
+
+.ball-run {
+  background: #0284C7;
+  color: #FFFFFF;
+  border: 1px solid #38BDF8;
+}
+
+.ball-four {
+  background: #059669;
+  color: #FFFFFF;
+  border: 1px solid #34D399;
+  box-shadow: 0 0 10px rgba(52, 211, 153, 0.4);
+}
+
+.ball-six {
+  background: #7C3AED;
+  color: #FFFFFF;
+  border: 1px solid #C084FC;
+  box-shadow: 0 0 12px rgba(192, 132, 252, 0.5);
+}
+
+.ball-wicket {
+  background: #E11D48;
+  color: #FFFFFF;
+  border: 1px solid #FB7185;
+  box-shadow: 0 0 12px rgba(251, 113, 133, 0.6);
+  animation: pulse-red 1.5s infinite;
+}
+
+.ball-extra {
+  background: #D97706;
+  color: #FFFFFF;
+  border: 1px solid #FCD34D;
+}
+
+@keyframes pulse-red {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+/* Toast Notifications */
+.toast {
+  animation: slide-up 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+}
